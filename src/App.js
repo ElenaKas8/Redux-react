@@ -1,20 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import { useSelector } from 'react-redux';
+import Counter from "./components/Counter";
+import String from "./components/String";
+import Users from "./components/Users";
 
 function App() {
-
-  const count =useSelector(state => state.count)
   return (
     <div>
-      <h1>Count: {count}</h1>
-  
-
-  <div>
-
-    <button onClick={() => dispatch({type:"INCREMENT"})}>INCREMENT</button>
-    <button onClick={() => dispatch({type:"DECREMENT"})}>Decriment</button>
-  </div>
+      <Counter/>
+      <String/>
+      <Users/>
     </div>
   );
 }

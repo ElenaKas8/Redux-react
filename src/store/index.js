@@ -1,22 +1,20 @@
-import {createStore} from 'redux'
-
-const defaultStore = {
-
-    count:0
-}
+import {combineReducers, createStore} from 'redux'
+import { counterReducer } from './counterReducer'
+import { stringReducer } from './stringReducer'
+import { usersReducer } from '../store/usersReduser'
 
 
-const reducer = (store, action) => {
+const rootReducer = combineReducers({
+   count: counterReducer,
+   string: stringReducer,
+   users: usersReducer
+})
 
-    switch (action.type) {
-        case "INCREMENT":
-            return {...store, count:store.count+1} 
-        case "DECREMENT":
-            return {...store, count:store.count-1} 
-        default:
-            return store
-    }
-    
-}
+export const store = createStore(rootReducer)
 
-export const store=createStore(reducer)
+
+// Структура экшена => 
+// {
+//     type: 'INCR',    => тип операции
+//     payload: 5       => полезные данные (аналог аргументов функции для setState)
+// }
